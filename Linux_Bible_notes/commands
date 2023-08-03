@@ -1,0 +1,2 @@
+/* this command creates a compressed backup of your user info dir */
+	tar -cvf backup.tar /home/matthew
