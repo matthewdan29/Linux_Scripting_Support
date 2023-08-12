@@ -19,3 +19,6 @@
 		# ls /etc/rc?.d/*Example_script_cup
 
 		After that use the service command to start/stop then reboot 
+
+
+Hey change the script to sh 
