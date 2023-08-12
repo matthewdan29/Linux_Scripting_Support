@@ -1,0 +1,15 @@
+1) Create a directory for storing your CSR. 
+		# mkdir /etc/pki/tls/ssl.csr
+		# cd /etc/pki/tls/ssl.csr/
+
+2) Use the "openssl" command to generate the CSR. The result is a CRS file in the current directory name "server.csr." When you enter the information, the Common Name should match the name that clients will use to access your server. Be sure to get the other details right so it can be validated by a third-party CA. Also, if you had entered a passphrase for your key, you are prompted to enter it here to use the key. 
+
+		# openssl req -new -key ../private/server.key -out server.csr 
+
+3) Visit the website of the certificate signing authority you chosse and request a signed certificate. At some point the CA site will probably ask you to copy and paste the contents of your CSR(server.csr file in this example) into a form needed to make the request. 
+
+4) When the CA sends you the certificate, save it in the /etc/pki/tls/certs/ dir using a name based on the site you are hosting - for example example.org.crt
+
+5) Change the calue of "SSLCertificateFile" in the "/etc/httpd/conf.d/ssl". conf file to point to your new CRT file. Or, if you have multiple SSL hosts, you might want to create a separate entry. 
+
+

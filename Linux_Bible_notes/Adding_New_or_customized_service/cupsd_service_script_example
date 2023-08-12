@@ -1,0 +1,37 @@
+# cat /etc/rc.d/init.d/cups
+#!/bin/sh
+
+...
+
+# chkconfig: 2345 25 10
+
+...
+
+start () 
+{
+	echo -n $"Starting $prog: "
+	# start deamon 
+	deamon $DAEMON
+	RETVAL=$?
+	echo 
+	[ $RETVAL =0 ] && touch /var/lock/subsy/cups
+	return $RETVAL 
+}
+
+stop () 
+{
+	# stop deamon
+	echo -n $"Stopping $prog: "
+	killproc $DAEMON
+	RETVAL=$?
+	echo		[$RETVAL = 0] && rm -f /var/lock/subsys/cups
+}
+
+restart ()
+{
+	stop 
+	start 
+}
+
+case $1 in 
+...

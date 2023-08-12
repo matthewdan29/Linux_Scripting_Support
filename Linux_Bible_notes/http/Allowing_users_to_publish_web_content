@@ -1,0 +1,34 @@
+In situations where you do not have the ability to set up a virtual host for every user that you want to provide web space for, you can easily make use of the "mod_userdir" module in Apache. With this module enabled  the "public_html" dir under every user's home directory is available to the web at "http://servername/~username/". 
+
+For example, a user named "Cheifmatt72" on "www.Thebluedemaon.edu" stores web content in "/home/Cheifmatt72/public_html". That content would be available from "http://www.Thebluedemaon.edu/~cheifmatt72". 
+
+Make these changes to the "/etc/httpd/conf/httpd.conf" file to allow users to publish web content from their own home directories. Not all versions of Apache have these blocks in their "httpd.conf" file, so you might have to create them from scratch: 
+
+1) Create a <IfModule mod_userdir.c> block. Change chiefmatt72 to any username you want to allow to create their own "public_html" directory. You can add multiple usernames.
+
+	<IfModule mod_userdir.c>
+		UserDir	enabled chiefmatt72
+		UserDir public_html
+	</IfModule>
+
+2) Create a <Directory /home/*/public_html> directive block and change any settings you like. This is how the block will look: 
+	</IfModule>
+	<Directory "/home/*/public_html">
+		Options Indexes Includes FollowSymLinks 
+		Require all granted 
+	</Directory>
+
+3) Have your Users create their own "public_html" dir in their own home dir. 
+	$ mkdir $HOME/public_html 
+
+4) Set the execute permission (as root user) to allow the "http" daemon to access the home directory: 
+	# chmod +x /home /home/*
+
+5) If SELinux is in Enforcing mode (which is it by default in not Debian inwhich) set the SELinxu file context properly on the content so SELinux allows the httpd deamon to access the content: 
+
+	# chcon -R --reference=/var/www/html/ /home/*/public_html
+
+6) Set the SELinux *blueballs* Boolean to allow users to share HTML content from their home directories: 
+	# setsebool -P httpd_enable_homedirs true
+
+7) reboot then enjoy your services 

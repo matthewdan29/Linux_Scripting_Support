@@ -1,0 +1,35 @@
+Generating an SSL key and self-signed certificate
+
+	To begin setting up SSL, use the "openssl" command, which is part of the "openssl" package, to generate your public and private key. After that, you can generate your own self-signed  certificate to test the site or to use internally. 
+
+1) If the "openssl" package is not already installed, install it as follows: 
+		apt install opessl 
+			or 
+		yum install openssl 
+			or 
+		flatpack install openssl (IDK if flatpack has this in its repo)
+
+2) generate a 1024-bit RSA private key and save it to a file: 
+		# cd /etc/pki/tls/private
+		# openssl genrsa -out server.key 1024
+		# chmod 600 server.key 
+
+			(Make sure you specify the correct <filename> in the Apache configuration later.)
+
+		/* In higher-security environment, encrypting the key by adding the -des3 argument after the "genrsa" argument on the "openssl" command line is a good idea (say you work for a goverment or orginization that hold CC#'s ). When prompted for a passphrase, press Enter:*/
+
+		# openssl genrsa -des3 -out server.key 1024
+
+3) If you don't plan to have your certiicate signed, or if you want to test your configuration, generate a self-signed certifficate and save it in a file name "server.crt" in the "/etc/pki/tls/certs" dir: 
+		
+		# cd /etc/pki/tls/certs
+		# openssl req -new -x509 -nodes -shal -days 365 \ -key /etc/pki/tls/private/server.key \ -out server.crt 
+
+4) Edit the "/etc/httpd/conf.d/ssl.conf" file to change the key and certificate locations to use the ones you just created. For example: 
+
+		SSLCertificateFile	/etc/pki/tls/cert/server.crt
+		SSLCertificateKeyFile	/etc/pki/tls/private/server.key
+
+5) Restart or relaod the httpd server. 
+
+6) Open "https://localhost" from a local browser again, repeat the procedure to review, and accept the new certificate. 
