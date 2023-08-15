@@ -1,0 +1,8 @@
+apt_mirror: http://us.archive.ubuntu.com/ubuntu/
+apt_mirror_search: 
+- http://myownmirror.example.com
+- http://archive.ubuntu.com
+packages: 
+- nmap
+- mycoolcmd
+- [libmystuff, 3.16.0-25]

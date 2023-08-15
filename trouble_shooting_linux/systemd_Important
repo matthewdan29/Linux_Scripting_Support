@@ -1,0 +1,12 @@
+The systemd facility is the initialization process for many Linux systems.
+
+	Targets:
+		Instead of runlevels, systemd focuses on tartgets. A target can start a set of services, as well as create or start other types of units. 
+
+	System V compatibility: 
+		There are targets that align with system V runlevels, if you are used to dealing with runlevels. Likewise, systemd supports System V init scritps and commands such as "chkconfig" and "service" for manipulating thos services. 
+	Dependency-based start-up: 
+		When the system starts up, any service in the default target that has had its dependencies met can start. This feature can speed up the boot process, by ensuring that a single stalled service doesn't stall other services from starting if they dont need the stalled service. 
+
+	Resource usage:
+		With systemd, you can use cgroups to limit how much of your systems resources is consumed by a service. For example, you can limit the amount of memory, CPU, or other resources an entire service can consume, so a runaway process or a service that spins off an unreasonanle number of child processes cannot consume more than the entire service is allowed. 

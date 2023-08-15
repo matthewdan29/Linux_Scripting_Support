@@ -1,0 +1,16 @@
+Let's say the user "mattdan29" is going to send a message to the user "Thegreat", along with his signature. He has created a file containing the plaintext message to send. He uses the "gpg2" utility to create the signature file and encrypt the message file. The "--sign" option tells the "gpg2" utility the "MessageForTheGreat.txt" is the file to encrypt and use to create the digital signature. Inresponse, the "gpg2" utility: 
+	
+	Creates a message digest (hash) of the message file (C looks at char as an array) 
+	Encrypts the message digest, which creates the digital signature 
+	Encry[ts the message file 
+	Places the encrypted contendts into the file specified by the "--output"options, "Thegreat.Ds"
+
+The file "Thegreat.DS" now contains an encrypted and digitally signed message. The following code demonstrates this process: 
+
+	$ gpg2 --output Thegreat.Ds --sign MessageForTheGreat.txt
+
+After the user "Thegreat" receives the signed and encrypted file, she can use the "gpg2" utility to check the digital signature and decrypt the file in one step. In the code the follows, the "--decrypt" option is used along with the name of the digitaly signed file, "Thegreat.DS". The file's maessage is decrypted and shown. The digital signature of the file is checked and found to be valid. 
+
+	$ gpg2 --decrypt Thegreat.DS
+
+without "mattdan29 public key on her key ring, the other person would not be able to decrypt this message and check the digital signature. 

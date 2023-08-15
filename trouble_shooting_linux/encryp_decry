@@ -1,0 +1,11 @@
+The steps needed for encryption/decryption of files using asymmetric keys (linux using gpg2 and tar with a pair key DB)(This is file handling basics)
+
+	1) Generate the key pair and the key ring. 
+	2) Export a copy of your public key to a file. 
+	3) Share the public key file. 
+	4) Individuals who want to send you encrypted files add your public key to their key ring. 
+	5) A file is encrypted using your public key. 
+	6) The encrypted file is sent to you. 
+	7) You decrypt the file using your private key. 
+
+Remember that in asymmetric cryptiography, each public and private key is a paired set that works together. 

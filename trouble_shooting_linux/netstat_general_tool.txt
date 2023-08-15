@@ -1,0 +1,4 @@
+The "netstat" command is a great general-purpose tool for checking network services. The following command list the names and process IDs(p) for all processes that are listening(l) for tCP(t) and UDP(u) services, along with the port number(n) they are listening on. The following command line fileter out all lines excetp those associated with "http" process: 
+	netstat -tupln | grep httpd 
+
+The example shows that the "httpd" process is listening on port 80 and 443 for all interfaces. it is possible that the "httpd" process might be listening on selected interfaces. For example if "httpd" process were only listening on the local interface (127.0,0.1) for HTTP requests (port 80). 

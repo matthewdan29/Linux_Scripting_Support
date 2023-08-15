@@ -1,0 +1,7 @@
+On each hypervisor, there should be a default network bridge name virbro0. All hypervisors will be added to this network interface and automatically assigned an IP address. By default, the hypervisor uses the address range of 192.168.122.2 - 192.168.122.254 to assign to the vertual machines. Using NAT, the host can route packets from the virtual machines using private address to external network interfaces. 
+
+Do the following on each hypervisor to check the bridge for each: 
+
+		# brctl show virbr0
+
+		# ip addr show virbr0

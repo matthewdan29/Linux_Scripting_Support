@@ -1,0 +1,9 @@
+The "iptables" firewall has the abitlity to do more than just low-level packet filtering. It defines what type of firewall functionality is taking place. There are four tables in the "iptables" utility, with an additional table added by SELinux. The tables offer the following functionalities: 
+	
+		Filter -- The "filter" table is the packet filtering feature of the firewall. In this table, access control decisions are made for packets traveling to, from and through your linux system. 
+	
+		Mangle -- As you suspect, packets are mangled (modified) according to the rules in the "mangle" table. Mangling packets is used in Network Address Translation. 
+
+		Raw -- The "raw" table is used to exempt certain network packets from something called "connection tracking". This feature is important when you using Network Address Translation and Virtualization on your linux server. 
+
+		Security -- This table is available on distros that have SELinux. The "security" table is used to filter network packets using MAC rules. This table is used with the "filter" table. The "security" table rules are applied only after the rules in the "filter" table are applied. This way the MAC rules are applied only after the DAC rules are applied, which is consistent with SELinux implementation. 

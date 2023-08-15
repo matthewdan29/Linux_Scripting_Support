@@ -1,0 +1,17 @@
+Being able to migrate your virtual machines between different hypervisors gives you tremendous flexibility in managing your computer workloads. Here are some of the advantages: 
+
+		Improve performance: by moving VM's from hypervisors that are overloaded to ones that have more available memory and CPU capacity. 
+
+		Do routine: maintence on a hypervisor while keeping your VMs running. 
+
+		Move VMs off underutilized hypervisors: so you can shut them off to save energy until they are needed again. 
+
+		Move VMs off site: if you are expecting to shut down a datacenter or expecting a hurricane or other catastrophe to hit your datacenter. 
+
+Live migration, in particular, is valuable if you need work to continue on the VMs without interruption. The key to gettig live VM migration to work is setting up your environment properly. Make sure the following are in place: 
+
+		Shared networked storge among the hypervisors 
+		The same network interfaces configured on each hypervisor 
+		Compatibli CPUs between hypervisors (Often, a set of hypervisors have the exact same hardware.)
+		A fast network connection between the hypervisors and storage 
+		The same or similar versions of virtuization software on the hypervisors 

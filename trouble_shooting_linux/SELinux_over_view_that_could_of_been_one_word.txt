@@ -1,0 +1,9 @@
+SELinux is a large and rich tool. Here are some recommendations as you get started implementing SELinux on your system. 
+
+You can use the default "targeted" SELinux mode to secure most basic network services without needing a assign special user roles or otherwise lock down your system. The main things you need to do are put files in standard locations, make sure Booleans are turned on for less secure features you want on anyway, watch AVC denials for problems
+	
+	Start with the permissive operational mode. This allows requests that SELinux sees as insecure to succed. 
+	
+	Run your current system for a significant amount of time in Permissive mode. Review the logs and see what problems may occur with the default SELinux settings. You can then change Booleans or file contexts so features improperly denied can be allowed. After the problems are worked out, turn the "enforcing" mode.
+
+	Overall, implement SELinux configuration changes one at a time, in a test environment or using Permissive mode. See what kind of effect each configuration change has before moving on the next one. You can then use the Audit2allow command to selectively allow actions that cause AVC denials to be added to the policy of what is allowed for a service. 

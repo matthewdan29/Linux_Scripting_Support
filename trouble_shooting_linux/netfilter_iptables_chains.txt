@@ -1,0 +1,13 @@
+The "netfileter/iptables" firewall categorizes network packets into categories, called chains. There are five chains that a network packet can be designated as: 
+		Input-- Network packets coming into the linux server
+		
+		Forward-- Network packets coming into the linux server that are to be routed elsewhere
+
+		Output-- Network packets coming out of the linux server 
+
+		Prerouting-- Used by NAT, for modifying network packets when they come into the linux server. 
+	
+		Postrouting-- Used by NAT, for modifying network packets before they come out the linux server. 
+
+After a network packet is categorized into a specific chain, "iptables" can determine what policies or rules apply to that particular packet. 
+

@@ -1,0 +1,16 @@
+For each network packet, a rule can be set up defining what to do with that individual packet. Network packets can be identified many way by the "netfilter/iptables" firewall. 
+
+	Source IP address
+	Destination IP address 
+	Network protocol 
+	Inbound port
+	Outbound port 
+	Network state 
+
+If no rule exists for a particular packet, then the overall policy is used. Each packet category or chain has a default policy. Agter a network packet matches a particular rule or falls to the default policy, action on the packet can occur. The action taken depends upon what "iptable" target is set. Here are a couple of actions that can be taken: 
+
+	Accept-- Network packet is accepted into the server. 
+	Reject-- Network packet is drooped and not allowed into the server. A rejection message is sent. 
+	Drop-- Network packet is dropped and not allowed into the server. No rejection message is sent. 
+
+

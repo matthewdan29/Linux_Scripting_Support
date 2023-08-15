@@ -1,0 +1,14 @@
+A digital signature is a electronic originator used for authentication and data verification. A digital signature is not a scan of your physical signature. Instead, it is a cryptograhic token sent with a file, so the file's receiver can be assured that the file came from you and has not been nodified in any way. (basics)
+
+When you create a digital signature, the following steps occur: 
+	1) You create a file or message. 
+	2) Using the "gpg2" utility, you create a hash or message-digest of the file. 
+	3) The "gpg2" utility then encrypts the hash and the file, using an asymmeteric key cipher. For the encryption, the private key of the public/private key pair is used. This is now a digitally signed encrypted file. 
+	4) You send the encrypted hash and file to the receiver. (you can use the dir in my other repos for a hash functions of your own if you want to send messages along with a SMTP script in my other github*mattdan29* for sending fully encrypted messages DM me)
+	5) The receiver recreates the hash or message digest of the received encrypted file. 
+	6) Using the "gpg2" utility, the receiver decrypts the received digital signature using the public key, to obtain the original hash or message digest. 
+	7) The "gpg2" utility compares the original hash to the recreated hash to see if they match. If they match, the receiver is told the digital signature is good. 
+	8) The receiver can now read the decrypted file. 
+
+
+Notic in Step 3 That the private key is used first. In the description of asymmetric key cryptography, the public key was used first. Asymmetric key cryptography is flexible enough tpo allow you to use your private key to encrypt and the receiver to use your public key to decrypt. 
